@@ -9,7 +9,7 @@ import pandas as pd
 import yfinance as yf
 import matplotlib.pyplot as plt
 
-# Ensure plots display
+# plots display
 %matplotlib inline
 
 # Step 1: Download historical stock data (2 years)
