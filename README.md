@@ -1,5 +1,5 @@
 # ==============================
-# Portfolio Optimization Project (Google Colab Ready)
+# Portfolio Optimization Project
 # Author: Abhishek kumar
 # ==============================
 
