@@ -1,6 +1,47 @@
+# Portfolio Optimization with Monte Carlo Simulation
+
+This project demonstrates how to construct and evaluate stock portfolios using Python.  
+It downloads historical price data, calculates returns, and simulates **10,000 random portfolios** to find the **optimal portfolio** using the **Sharpe Ratio**.
+
+---
+
+##  Project Overview
+
+| Feature | Description |
+|--------|-------------|
+|  Data Source | Yahoo Finance (`yfinance`) |
+|  Time Period | 2023-01-01 to 2025-01-01 |
+|  Portfolio Types | Equal-Weighted & Optimized |
+|  Optimization Goal | Maximize Sharpe Ratio |
+|  Simulation | 10,000 Random Portfolios |
+
+---
+
+##  Key Financial Outputs
+
+-  Expected Annual Return  
+-  Portfolio Volatility (Risk)  
+-  Sharpe Ratio (Performance Measure)  
+-  Optimal Portfolio Weights  
+-  Efficient Frontier Visualization  
+
+---
+
+##  Technologies Used
+- Python
+- NumPy
+- Pandas
+- Matplotlib
+- yFinance
+
+---
+
+##  Python Code
+
+```python
 # ==============================
 # Portfolio Optimization Project
-# Author: Abhishek kumar
+# Author: Abhishek Kumar
 # ==============================
 
 # Step 0: Import libraries
@@ -9,7 +50,7 @@ import pandas as pd
 import yfinance as yf
 import matplotlib.pyplot as plt
 
-# plots display
+# plots display (Notebook only)
 %matplotlib inline
 
 # Step 1: Download historical stock data (2 years)
@@ -32,8 +73,8 @@ cov_matrix = returns.cov() * 252
 portfolio_volatility_eq = np.sqrt(np.dot(weights_eq.T, np.dot(cov_matrix, weights_eq)))
 
 print("\n Equal-Weighted Portfolio Performance:")
-print("Expected Annual Return: {:.2f}%".format(portfolio_return_eq*100))
-print("Portfolio Volatility (Risk): {:.2f}%".format(portfolio_volatility_eq*100))
+print("Expected Annual Return: {:.2f}%".format(portfolio_return_eq * 100))
+print("Portfolio Volatility (Risk): {:.2f}%".format(portfolio_volatility_eq * 100))
 
 # Cumulative return plot
 (returns * weights_eq).cumsum().plot(figsize=(10,5))
@@ -56,9 +97,9 @@ for i in range(num_portfolios):
     port_volatility = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights)))
     sharpe_ratio = port_return / port_volatility
     
-    results[0,i] = port_return
-    results[1,i] = port_volatility
-    results[2,i] = sharpe_ratio
+    results[0, i] = port_return
+    results[1, i] = port_volatility
+    results[2, i] = sharpe_ratio
 
 results_df = pd.DataFrame(results.T, columns=["Returns", "Volatility", "Sharpe Ratio"])
 
